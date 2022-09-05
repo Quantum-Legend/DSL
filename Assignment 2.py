@@ -11,7 +11,8 @@ d) Display mark with highest frequency
 def Average(L):
     Sum = 0
     for i in L:
-        Sum = Sum + i
+        if i != 'NA' or i != 'na' or i != 'Na' or i != 'nA':
+            Sum = Sum + i
     Avg = Sum/len(L)
     return Avg
 
@@ -19,15 +20,17 @@ def Average(L):
 def Highest(L):
     Hi = 0
     for i in L:
-        if i > Hi:
-            Hi = i
+        if i != 'NA' or i != 'na' or i != 'Na' or i != 'nA':
+            if i > Hi:
+                Hi = i
     return Hi
 
 def Lowest(L):
     Lo = 100
     for i in L:
-        if i < Lo:
-            Lo = i
+        if i != 'NA' or i != 'na' or i != 'Na' or i != 'nA':
+            if i < Lo:
+                Lo = i
     return Lo
 
 #Count of students who were absent for the test
@@ -39,39 +42,30 @@ def Absent(L):
     return c
 
 #Display mark with highest frequency
-""" def Mode(L):
-    mode = 0
-    pos = L[0]
-    check = 0
+def Mode(L):
+    max = 0
+    res = L[0]
     for i in L:
-        c = -1
-        if check == 1:
-            continue
-        else:
-            for j in L:
-                if j==i:
+        c=0
+        for j in L:
+            if i != 'NA' or i != 'na' or i != 'Na' or i != 'nA':
+                if i == j:
                     c+=1
-                    check = 1 """
-
-""" #Display mark with highest frequency
-def Mode(List):
-    Max = 0
-    res = List[0]
-    for i in List:
-        freq = List.count(i)
-        if freq > Max:
-            Max = freq
-            res = i
-    return res """
+        if c>max:
+            max=c
+            res=i
+    return i
 
 n = int(input("Enter class strength "))
 Marks = []
 for i in range(0,n):
-    L = int(input("Enter marks of the student (Type NA if absent):"))
+    L = input("Enter marks of the student (Type NA if absent):")
+    if i != 'NA' or i != 'na' or i != 'Na' or i != 'nA':
+        L = int(L)
     Marks.append(L)
 
 print ("The average score of the class is:", Average(Marks))
 print ("The highest score in the class is:", Highest(Marks))
 print ("The lowest score in the class is:", Lowest(Marks))
 print ("The number of students absent for the test are:", Absent(Marks))
-#print ("Marks with highest frequency is:", Mode(Marks))
+print ("Marks with highest frequency is:", Mode(Marks))
