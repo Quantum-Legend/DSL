@@ -5,42 +5,83 @@ b) Subtraction of two matrices
 c) Multiplication of two matrices
 d) Transpose of a matrix
 """
+
+#Input matrix
 def MxOrigin():
     R = int(input("Enter no. of rows: "))
     C = int(input("Enter no. of columns: "))
     M =[]
     for i in range(R):
+        #Iterating over rows of the matrix
+        L=[] #List to store each row
+        for j in range(C):
+            #Iterating over columns of the matrix
+            L.append(int(input("Enter element: "))) #Reading elements 
+        M.append(L) #Appending each row as an element in the list
+    return M
+
+#Initializing a null matrix of order R x C
+def MxInitial(R, C):
+    M =[]
+    for i in range(R):
         L=[]
         for j in range(C):
-            L.append(int(input("Enter element: ")))
+            L.append(0) 
         M.append(L)
-    return M
+    return M 
+
+#Matrix dislayed in 2D format
+def MxDisplay(M):
+    if M != "Incorrect Input":
+        for i in range(len(M)):
+            for j in range(len(M[0])):
+                print(M[i][j], '\t', end = '')
+            print()
+        print()
+    else :
+        print(M)
 
 #Addition of two matrices
 def MxAdd(M1, M2):
-    M3 = M1
-    if len(M1) == len(M2) and len(M1[0]) == len(M2[0]):
+    if len(M1) == len(M2) and len(M1[0]) == len(M2[0]): #Addition of two matrices only possible if they have same order
+        M3 = MxInitial(len(M1), len(M1[0]))
         for i in range(len(M1)):
             for j in range(len(M1[0])):
                 M3[i][j] = M1[i][j] + M2[i][j]
-    return M3
+        return M3
+    else :
+        return "Incorrect Input"
 
 #Subtraction of two matrices
 def MxSub(M1, M2):
-    M3 = M1
-    if len(M1) == len(M2) and len(M1[0]) == len(M2[0]):
+    if len(M1) == len(M2) and len(M1[0]) == len(M2[0]): #Subtraction of two matrices only possible if they have same order 
+        M3 = MxInitial(len(M1), len(M1[0]))
         for i in range(len(M1)):
             for j in range(len(M1[0])):
                 M3[i][j] = M1[i][j] - M2[i][j]
-    return M3
+        return M3
+    else :
+        return "Incorrect Input"
 
-#Transpose of a matrices
+#Multiplication of two matrices
+def MxMult(M1,M2):
+    if len(M1[0]) == len(M2): #Multiplication of two matrices only possible if C1 = R2
+        M3 = MxInitial(len(M1), len(M1[0])) #Order of the product matrix is R1 x C2
+        for i in range(len(M1)): #iterating over R1 (Row of M1)
+            for j in range(len(M2[0])): ##iterating over C2 (Column of M2)
+                for k in range(len(M2)): ##iterating over R2 (Row of M2)
+                    M3[i][j] += M1[i][k] * M2[k][j] #Sum of Products
+        return M3
+    else :
+        return "Incorrect Input"
+
+
+#Transpose of a matrix
 def MxTrans(M):
-    Mt = M
-    if len(M1) == len(M2) and len(M1[0]) == len(M2[0]):
-        for i in range(len(M1)):
-            for j in range(len(M1[0])):
-                Mt[i][j] = M[i][j]
+    Mt = MxInitial(len(M[0]), len(M))
+    for i in range(len(M)):
+        for j in range(len(M[0])):
+            Mt[j][i] = M[i][j] 
     return Mt
 
 #Main program
@@ -49,13 +90,11 @@ print("First Matrix: ")
 M1 = MxOrigin()
 print("Second Matrix: ")
 M2 = MxOrigin()
-Msum = MxAdd(M1,M2)
-Mdiff = MxSub(M1,M2)
-Mtrans1 = MxTrans(M1)
-Mtrans2 = MxTrans(M2)
-print(M1)
-print(M2)
-print(Msum)
-print(Mdiff)
-print(Mtrans1)
-print(Mtrans2)
+
+MxDisplay(M1)
+MxDisplay(M2)
+MxDisplay(MxAdd(M1,M2))
+MxDisplay(MxSub(M1,M2))
+MxDisplay(MxMult(M1,M2))
+MxDisplay(MxTrans(M1))
+MxDisplay(MxTrans(M2))
