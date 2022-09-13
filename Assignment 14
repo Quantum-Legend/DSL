@@ -1,0 +1,53 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+#selsort
+def selsort(x):
+    
+    for i in range(0,len(x)):
+        min = x[i]
+        sot=0
+        for j in range(i+1,len(x)):
+            if x[j]< min :
+                min =x[j]
+                sot=j       
+        temp=x[i]
+        x[i]= min
+        x[sot]=temp
+    return x
+#bubblesort
+def bubblesort(L):
+    n=len(L)
+    for i in range(0,n-1) :
+        for j in range(0,n-i-1):
+            if L[j]>L[j+1]:
+                temp=L[j+1]
+                L[j+1]=L[j]
+                L[j]=temp
+    return L
+#top five persentage:
+def top5per(L):
+    L.reverse()
+    for i in range(0,5):
+        A=L[i]
+        print(A) 
+        
+#main
+ch=int(input("Choose 1 for selsort or 2 for bubblesort:"))
+if ch == 1 :
+    L1=[]
+    nn=int(input("enter no of students (atleast 7):"))
+    for i in range(0,nn):
+        K=int(input("Enter percentage :"))
+        L1.append(K)
+    print("Top five percentages are:",) 
+    top5per(selsort(L1))
+elif ch==2 :
+    L2=[]
+    N=int(input("Enter no. of students(atleast 7):"))
+    for k in range(0,N):
+        F=int(input("Enter percentage :"))
+        L2.append(F)
+    print("Top five percentages are:", )
+    top5per(bubblesort(L2))
+else :
+    print("INVALID INPUT")
