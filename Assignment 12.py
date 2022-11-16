@@ -35,38 +35,38 @@ def binarySearch_Recursive(arr, x, low, hi):
         hi = mid - 1
         return binarySearch_Recursive(arr, x, low, hi)
 
-#Fibonacci Search function
-def FibonacciSearch(arr, x):
-    n = len(arr)
-    fibMm1 = 0
-    fibMm2 = 1
-    fibM = fibMm1 + fibMm2
+#def fibonacci search function
+def fibsearch(a,x):
+    n=len(a)
+    f1=0
+    f2=1
+    F=f1+f2
 
-    while fibM < n:
-        fibMm1 = fibMm2
-        fibMm2 = fibM
-        fibM = fibMm1 + fibMm2
-    
-    offset = -1
+    while(F<n):
+        f1=f2
+        f2=F
+        F=f1+f2
+    offset=-1
+    while(F>1):
 
-    while fibM > 1:
-        i = min(fibMm2 + offset, n-1)
-        if x > arr[i]:
-            fibM = fibMm2
-            fibMm2 = fibMm1
-            fibMm1 = fibM - fibMm1
-            offset = i
-        elif x < arr[i]:
-            fibM = fibMm1
-            fibMm2 = fibMm2 - fibMm1
-            fibMm1 = fibM - fibMm2
-        else:
-            return i
+        i=min(offset+f1,n-1)
 
-    if fibMm1 and arr[n-1] == x:
+        if a[i] < x :
+            F = f2
+            f2=f1
+            f1=F-f2
+            offset=i
+        elif a[i] > x:
+            F=f1
+            f2=f2-f1
+            f1=F-f2
+        else :
+            return i    
+        
+    if (f2 and a[n-1] == x):
         return n-1
-    else:
-        return -1
+
+    return -1
 
 #Driver code
 seq = [1,2,4,5,6,8,9,12]
@@ -80,7 +80,7 @@ while(ch != 4):
         elif ch == 2:
             i = binarySearch_Recursive(seq, x, 0, len(seq) - 1)
         elif ch == 3:
-            i = FibonacciSearch(seq, x)
+            i = fibsearch(seq, x)
         else:
             print("Wrong input! Please try again:")
 
