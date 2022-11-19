@@ -5,10 +5,23 @@ b) Write a python program to store names and mobile numbers of your friends in s
 order on names. Search your friend from list using Fibonacci search. Insert friend if not 
 present in phonebook. 
 """
+#Sort function
+def sort(arr):
+    for _ in range(len(arr)):
+        swp = 0
+        j = 0
+        while j < len(arr) - 1:
+            if arr[j][0] > arr[j+1][0]:
+                arr[j],arr[j+1] = arr[j+1],arr[j]
+                swp = 1
+            j += 1
+        if swp == 0:
+            break
+
 # Add friend function
 def addFriend(arr, name, number):
     arr.append([name, number])
-    arr.sort()
+    sort(arr)
     print("Friend added successfully")
 
 # Search friend function
