@@ -4,7 +4,7 @@ A repository for _Data Structures Laboratory_ Assignments from 2 Batches of lab 
 ## First Batch:
 * [x] Group A - No. 2
 * [x] Group A - No. 9
-* [x] Group B - No. 12 (Incomplete)
+* [x] Group B - No. 12
 * [ ] Group C - No. 19
 * [ ] Group C - No. 21
 * [ ] Group D - No. 25
