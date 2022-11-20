@@ -7,7 +7,7 @@ A repository for _Data Structures Laboratory_ Assignments from 2 Batches of lab 
 * [x] Group B - No. 12
 * [x] Group C - No. 19
 * [ ] Group C - No. 21
-* [ ] Group D - No. 25
+* [x] Group D - No. 25
 * [ ] Group E - No. 32
 
 ## Second Batch:
