@@ -209,7 +209,7 @@ void menu(club c)
         std::cout << "7. Display members" << std::endl;
         std::cout << "8. Count members" << std::endl;
         std::cout << "9. Exit" << std::endl;
-        std::cout << "Enter your choice: ";
+        std::cout << "Enter your choice (1 - 9): ";
         std::cin >> choice;
         switch(choice)
         {
@@ -272,7 +272,7 @@ int main()
         std::cout << "2. Class B" << std::endl;
         std::cout << "3. Concatenate the two classes" << std::endl;
         std::cout << "4. Exit" << std::endl;
-        std::cout << "Enter your choice: ";
+        std::cout << "Enter your choice (1/2/3/4): ";
         std::cin >> choice;
         switch(choice)
         {
