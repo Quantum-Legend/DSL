@@ -18,7 +18,6 @@ struct SLL_Node	// Node Structure of each Appointment
     int end;
     int min;
     int max;
-    int flag;
     struct SLL_Node *next;
 }*head;
 
@@ -105,7 +104,6 @@ void App_Shedule :: create_Shed()           //Function Definition to create Appo
        cin>>temp->min;
        cout<<"\n\t Enter Maximum Duration: ";
        cin>>temp->max;
-       temp->flag = 0;
        temp->next = NULL;
        
        if(head == NULL)
