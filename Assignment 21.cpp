@@ -39,7 +39,7 @@ class App_Shedule
 
 int main()
 {
-   int ch;
+   int choise;
    char ans;
    
    do
@@ -53,9 +53,9 @@ int main()
 
       
       cout<<"\n\n\t Enter your choice: ";                        
-      cin>>ch;
+      cin>>choise;
       
-      switch(ch)
+      switch(choise)
       {
          case 1: A1.create_Shed();
          	 break;
