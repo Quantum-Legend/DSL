@@ -82,3 +82,42 @@ int main()
    }while(ans == 'y');
    
 }
+
+void App_Shedule :: create_Shed()           //Function Definition to create Appointment Schedule
+{
+    int i;
+    struct SLL_Node *temp, *last;
+    
+    head = NULL;
+    
+    cout<<"\n\n\t How many Appointment Slots: ";
+    cin>>size;
+    
+    for(i=0; i<size; i++)
+    {
+       temp = new(struct SLL_Node);         // Step 1: Dynamic Memory Allocation
+       
+       cout<<"\n\n\t Enter Start Time: ";   // Step 2: Assign Data & Address
+       cin>>temp->start; 
+       cout<<"\n\t Enter End Time: ";
+       cin>>temp->end;
+       cout<<"\n\n\t Enter Minimum Duration: ";
+       cin>>temp->min;
+       cout<<"\n\t Enter Maximum Duration: ";
+       cin>>temp->max;
+       temp->flag = 0;
+       temp->next = NULL;
+       
+       if(head == NULL)
+       {
+          head = temp;
+          last = head;
+       }
+       else
+       {
+          last->next = temp;
+          last = last->next;
+       }
+       
+    }
+}
