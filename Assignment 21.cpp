@@ -195,6 +195,44 @@ void Schedule :: cancel_App() // Function definition to cancel an appointment
    }
 }
 
+void Schedule :: sort_App1()              //Function Definition to Sort Appointments
+{
+   int i,j,val;
+   Node *temp;
+
+
+   for(i=0; i < size-1; i++) 	
+   {
+       temp = head;
+       while(temp->next != NULL)
+       { 
+          if(temp->start > temp->next->start)
+          {
+              val = temp->start;
+	      temp->start = temp->next->start;
+	      temp->next->start = val;
+
+              val = temp->end;
+	      temp->end = temp->next->end;
+	      temp->next->end = val;
+
+              val = temp->min;
+	      temp->min = temp->next->min;
+	      temp->next->min = val;
+
+              val = temp->max;
+	      temp->max = temp->next->max;
+	      temp->next->max = val;
+	
+          }
+          temp = temp->next;
+       }   
+   }
+
+   cout<<"\n\n\t The Appointments got Sorted!!!";
+
+}
+
 int main()
 {
    int choice = 0;
