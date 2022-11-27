@@ -5,7 +5,7 @@ a) Display free slots
 b) Book appointment
 c) Cancel appointment (check validity, time bounds, availability)
 d) Sort list based on time
-e) Sort list based on time using pointer manipulation */
+e) Sort list based on time using pointer manipulation */
 
 #include<iostream>
 
@@ -22,7 +22,8 @@ struct Node // Node Structure of each Appointment
 class Schedule
 {
    private:
-   Node *head; // Head and Tail of the Linked List
+   int size;
+   Node *head; // Head of the Linked List
    public:
    Schedule()
    {
@@ -39,7 +40,7 @@ class Schedule
 
 void Schedule :: create_Schedule() // Function Definition to create Appointment Schedule
 {
-   int i, size;
+   int i;
    Node *temp, *last;
    head = NULL;
    std::cout<<"\n\t How many Appointment Slots: ";
@@ -195,42 +196,73 @@ void Schedule :: cancel_App() // Function definition to cancel an appointment
    }
 }
 
-void Schedule :: sort_App1()              //Function Definition to Sort Appointments
+void Schedule :: sort_App1() //Function Definition to Sort Appointments by swapping values in the nodes
 {
-   int i,j,val;
+   int i, val;
    Node *temp;
-
-
    for(i=0; i < size-1; i++) 	
    {
-       temp = head;
-       while(temp->next != NULL)
-       { 
-          if(temp->start > temp->next->start)
-          {
-              val = temp->start;
-	      temp->start = temp->next->start;
-	      temp->next->start = val;
-
-              val = temp->end;
-	      temp->end = temp->next->end;
-	      temp->next->end = val;
-
-              val = temp->min;
-	      temp->min = temp->next->min;
-	      temp->next->min = val;
-
-              val = temp->max;
-	      temp->max = temp->next->max;
-	      temp->next->max = val;
-	
-          }
-          temp = temp->next;
-       }   
+      temp = head;
+      while(temp->next != NULL)
+      { 
+         if(temp->start > temp->next->start)
+         {
+            val = temp->start;
+            temp->start = temp->next->start;
+            temp->next->start = val;
+            val = temp->end;
+            temp->end = temp->next->end;
+            temp->next->end = val;
+            val = temp->min;
+            temp->min = temp->next->min;
+            temp->next->min = val;
+            val = temp->max;
+            temp->max = temp->next->max;
+            temp->next->max = val;
+         }
+         temp = temp->next;
+      }   
    }
+   std::cout<<"\n\n\t The Appointments are Sorted!!!";
+}
 
-   cout<<"\n\n\t The Appointments got Sorted!!!";
-
+void Schedule :: sort_App2() // Function Definition to Sort Appointments by swapping the pointers of the nodes
+{
+   int i;
+   Node *temp, *temp2, *temp3, *temp4;
+   for(i=0; i < size-1; i++) 	
+   {
+      temp = head;
+      while(temp->next != NULL)
+      { 
+         if(temp->start > temp->next->start)
+         {
+            if(temp == head)
+            {
+               temp2 = temp->next;
+               temp3 = temp2->next;
+               temp->next = temp3;
+               temp2->next = temp;
+               head = temp2;
+            }
+            else
+            {
+               temp2 = temp->next;
+               temp3 = temp2->next;
+               temp4 = head;
+               while(temp4->next != temp)
+               {
+                  temp4 = temp4->next;
+               }
+               temp->next = temp3;
+               temp2->next = temp;
+               temp4->next = temp2;
+            }
+         }
+         temp = temp->next;
+      }   
+   }
+   std::cout<<"\n\n\t The Appointments are Sorted!!!";
 }
 
 int main()
@@ -257,6 +289,7 @@ int main()
          break;
          case 2:
          S1.display_Schedule();
+         break;
          case 3:
          S1.display_Free();
          break;
@@ -268,11 +301,11 @@ int main()
          break;
          case 6:
          std::cout << "\n\t Sorted Appointment Schedule Based on Time: ";
-         // A1.sort_App1();
+         S1.sort_App1();
          break;
          case 7:
          std::cout << "\n\t Sorted Appointment Schedule Based on Time using Pointer Manipulation: ";
-         // A1.sort_App2();
+         S1.sort_App2();
          break;
          case 8:
          std::cout << "\n\t Thank You!";
