@@ -1,11 +1,8 @@
-"""
-Write a Python program to compute following operations on String:
-a) To display word with the longest length
-b) To determines the frequency of occurrence of particular character in the string
-c) To check whether given string is palindrome or not
-d) To display index of first appearance of the substring
-e) To count the occurrences of each word in a given string
-"""
+""" Write a python program to store first year percentage of students in array. Write function 
+for sorting array of floating point numbers in ascending order using:
+a) Selection Sort 
+b) Bubble sort and display top five scores. """
+
 #Selection Sort
 def selsort(L):
     for i in range(len(L)):
@@ -51,4 +48,3 @@ elif ch == 2 :
     top5(bubblesort(L))
 else :
     print("INVALID INPUT! Enter correct input for the sorting method.")
-    
